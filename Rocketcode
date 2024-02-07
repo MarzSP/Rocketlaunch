@@ -1,0 +1,21 @@
+PImage raketFoto; 
+float raketX;       // Begin x-positie raket-foto
+float raketY;       // begin y-positie raket-foto
+
+void setup() {
+  size(400, 500);
+  raketFoto = loadImage("rocket.png");  // Via "Sketch", Load File, de foto van de raket toegevoegd en hier in het bestand geladen
+  raketX = width / 2 - raketFoto.width / 2;  // Door width / 2 is de foto in het midden geplaatst van het grafisch scherm
+  raketY = height;  // Begin positie van de raket is onderaan het scherm
+}
+
+void draw() {
+  background(0);
+  image(raketFoto, raketX, raketY);  // 
+  raketY = raketY - 1;  // Foto van raket beweegt 1 pixel per keer omhoog
+
+  // Zodra de foto bovenaan verdwijnt verschijnt deze weer onderaan het grafisch scherm
+  if (raketY + raketFoto.height < 0) {
+    raketY = height;
+  }
+}
